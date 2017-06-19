@@ -75,16 +75,19 @@ void trayicon_set_text(GtkStatusIcon* trayicon, const gchar* text) {
   gtk_status_icon_set_tooltip(trayicon, text);
 }
 
+#if GTK_CHECK_VERSION(2,16,0)
 void trayicon_set_markup(GtkStatusIcon* trayicon, const gchar* text) {
   gtk_status_icon_set_tooltip_markup(trayicon, text);
 }
-
+#endif
 gchar* trayicon_get_text(GtkStatusIcon* trayicon) {
   return gtk_status_icon_get_tooltip_text(trayicon);
 }
 
+#if GTK_CHECK_VERSION(2,16,0)
 gchar* trayicon_get_markup(GtkStatusIcon* trayicon) {
   return gtk_status_icon_get_tooltip_markup(trayicon);
 }
+#endif
 
 // vim: et sw=2 smarttab

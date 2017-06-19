@@ -35,9 +35,13 @@ void trayicon_show(GtkStatusIcon* trayicon);
 void trayicon_hide(GtkStatusIcon* trayicon);
 
 void trayicon_set_text(GtkStatusIcon* trayicon, const gchar* text);
+#if GTK_CHECK_VERSION(2,16,0)
 void trayicon_set_markup(GtkStatusIcon* trayicon, const gchar* text);
+#endif
 gchar* trayicon_get_text(GtkStatusIcon* trayicon);
+#if GTK_CHECK_VERSION(2,16,0)
 gchar* trayicon_get_markup(GtkStatusIcon* trayicon);
+#endif
 
 #endif
 // vim: et sw=2 smarttab
