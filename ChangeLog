@@ -1,0 +1,382 @@
+2010-04-17  Benoît Rouits <brouits@free.fr>
+	* added possibility to remove a stream from history.
+	* bumped stream history to 30 urls.
+
+2010-04-14  Benoît Rouits <brouits@free.fr>
+	* Switched from libglade to GtkBuilder
+	* Switched volume button to a GtkVolumeButton
+	* Moved connect and output buttons under volume button
+
+2010-03-29  Benoît Rouits <brouits@free.fr>
+	* Added optional tray icon and tray menu.
+	* Fixed bug when refresh_rate is longer than 1sec.
+	* Replaced the button_time by a label_time (GtkLabel) to avoid tooltip drops.
+	* Fixed condense/normal behaviour for smart (buggy?) window-managers.
+	* Fixed stream list selection (now copy stream name to stream entry).
+	* Fixed bug when streams change song title on the fly.
+
+2005-11-11  Andrej Kacian <andrej@kacian.sk>
+	* Changed "config_file" CLI option to "config".
+
+2005-10-26  Daniel Lindenaar <daniel-glurp@lindenaar.org>
+	* Fix last GTK_{WARNING,CRITICAL} due to the move to single window.
+	* Fix keyboard shortcuts, broken due to the move to single window.
+	* Better comply to GNOME-HIG by not changing the play into pause and
+	  vice-versa.
+
+2005-10-24  Daniel Lindenaar <daniel-glurp@lindenaar.org>
+	* Add row_activated signal handler for playlists treeview.
+	* Another speedup for playlist handling.
+
+2005-10-21  Daniel Lindenaar <daniel-glurp@lindenaar.org>
+	* Some patches to allow build on win32 playform.
+	* Changed glurp's look to not use any dialogs.
+	* added NSIS installer script file to build a win32 installer.
+	* workaround crashes when having insufficient permissions (needs a
+	  real implementation, though).
+	* Added commandline option --config-file=... to specify which config.
+	  file to use; Usefull for multiple server connections.
+	* Improve playlist loading time.
+
+2005-09-01  Andrej Kacian <andrej@kacian.sk>
+	* Only request plchanges when playlist version changes (duh!)
+
+2005-08-31  Andrej Kacian <andrej@kacian.sk>
+	* Use strftime() from gmpc to form titles displayed in playlist and
+	  current song bar.
+	* Store a pointer to mpd_Song inside GlurpSong. Do not show playlist
+	  treeview headers.
+	* Updated libmpdclient.[ch]
+	* Reordered main control bar buttons a bit.
+
+2005-08-30  Andrej Kacian <andrej@kacian.sk>
+	* Made left/right buttons seek in current song. Based on patch by
+	  Florian (oxifant at musicpd.org forums).
+	* Remember playlist visibility on exit, instead of having a config
+	  option.
+
+2005-08-27  Andrej Kacian <andrej@kacian.sk>
+	* Rearranged GUI elements a bit, made button icons smaller.
+
+2005-08-21  Andrej Kacian <andrej@kacian.sk>
+	* Changed location of connect/disconnect button.
+	* Make outputs button non-sensitive instead of hiding it
+	* Do a proper cleanup on SIGINT. Patch sent by Daniel Lublin
+	  <daniel at lublin.se>.
+	* Call correct signal handler on playlist load button.
+	* Fix quicksearch to search entire playlist, not just songs below
+	  cursor position.
+
+2005-06-05  Andrej Kacian <andrej@kacian.sk>
+	* Fixed main window size remembering
+	* Applied patch from Daniel Lindenaar <daniel at lindenaar.org> to add
+	  search capability to the add window. Modified the original patch so
+	  that the search results are displayed in a separate treeview item,
+	  instead of removing the database view.
+	* Use the song icon as an application window icon
+	* 0.11.6 released
+
+2005-04-10 Andrej Kacian <andrej@kacian.sk>
+	* Honor --datadir setting from configure
+
+2005-04-04 Andrej Kacian <andrej@kacian.sk>
+	* Added a config option enabling main window size (re)storing
+	* Disabled main window position (re)storing
+
+2005-04-03 Andrej Kacian <andrej@kacian.sk>
+	* Remember main window position and size
+	* Big code cleanup, mostly related to includes
+	* Added GPL copyright headers to all source files
+	* Fixed command line arguments parsing
+
+2005-03-31 Andrej Kacian <andrej@kacian.sk>
+	* Do not expand playlist controls bar
+
+2005-02-09 Andrej Kacian <andrej@kacian.sk>
+	* Moved "shuffle playlist" to playlist context menu
+	* Fixed a bug where string was freed too soon in playlist deletion
+
+2005-02-08 Andrej Kacian <andrej@kacian.sk>
+	* Got rid of toolbars in main window
+
+2004-12-29 Andrej Kacian <andrej@kacian.sk>
+	* Added support for MPD outputs enabling/disabling
+	* Fix bug in playlist columns visibility determining, no longer reverts
+	  to default
+	* Remain in disconnected state when server and/or port is not
+	  set correctly in config
+
+2004-11-12 Andrej Kacian <andrej@kacian.sk>
+    * Quicksearch in album field
+    * Playlist drag&drop bugfix
+
+2004-11-09 Andrej Kacian <andrej@kacian.sk>
+    * Numeric enter key now adds files too
+
+2004-11-05 Andrej Kacian <andrej@kacian.sk>
+    * Renamed player-shuffle.png to player-random.png
+    * Fixed Random button
+
+2004-11-01 Andrej Kacian <andrej@kacian.sk>
+    * Correctly update all GUI playlist columns
+    * Fix URL history saving/loading
+
+2004-10-29 Andrej Kacian <andrej@kacian.sk>
+    * Moved tooltip creating function into separate file (tooltips.c)
+    * Made playlist columns' display configurable, with fixed order for now
+    * Added custom icons for Add, Remove, Playlist, Playlists, Config buttons
+    * Made glurp getopt-aware, with --version only for now
+    * Do not check for keyboard shortcuts when focus is in quicksearch bar
+
+2004-10-28 Andrej Kacian <andrej@kacian.sk>
+    * Moved keypress GUI callback functions to separate file (keyboard.c)
+    * All windows except main are now closed with Esc
+    * Added some convenience keyboard shortcuts
+    * Arrow-driven DB browsing, yay!
+
+2004-10-23 Andrej Kacian <andrej@kacian.sk>
+    * Follow WM's default positioning style for main window placement
+
+2004-10-17 Andrej Kacian <andrej@kacian.sk>
+    * Added support for all common keyboard shortcuts in main window
+
+2004-10-16 Andrej Kacian <andrej@kacian.sk>
+    * Shuffle playlist button added
+    * Add long-awaited tooltips to buttons
+    * Playlist selection behaves sanely on rightclick now
+    * Revamped Add and Remove buttons and menus
+    * Various minor UI tweaks
+
+2004-10-15 Andrej Kacian <andrej@kacian.sk>
+    * Fix segfault on Add Stream dialog show when no stream history
+    * Fix gtk-warning for not realized playlist menu
+
+2004-10-14 Andrej Kacian <andrej@kacian.sk>
+    * Changed info frame titles to sensitive, due to user request
+    * If user clicks on an unselected row in song add dialog, cancel any
+      current selection and select only that row
+
+2004-09-25 Andrej Kacian <andrej@kacian.sk>
+    * Reset titlebar scrolling on song change and restart as appropriate
+      (bug found by thebug@FreeNode, thanks)
+
+2004-09-23 Andrej Kacian <andrej@kacian.sk>
+    * Implemented 'Add selected' and 'Update selected' options in addwindow
+      popup menu
+
+2004-09-06 Andrej Kacian <andrej@kacian.sk>
+    * 0.11.3 released
+
+2004-09-04 Andrej Kacian <andrej@kacian.sk>
+    * Use new icons (see AUTHORS) for connect and disconnect buttons
+
+2004-08-23 Andrej Kacian <andrej@kacian.sk>
+    * Moved connect/disconnect buttons to main control bar
+
+2004-07-25 Andrej Kacian <andrej@kacian.sk>
+    * Don't overwrite time/totaltime in statusbar when still dragging
+
+2004-07-20 Andrej Kacian <andrej@kacian.sk>
+    * Added stub functions for db popup menu callbacks
+    * Let MPD decide what song to PLAY when nothing is selected in pl
+
+2004-07-10 Andrej Kacian <andrej@kacian.sk>
+    * Fix warnings on 64-bit architectures
+
+2004-07-09 Andrej Kacian <andrej@kacian.sk>
+    * Add checks for MPD error after MPD interaction
+    * Changed tracknumber column to integer type
+    * Implemented popup context menu on playlist right-click
+
+2004-07-08 Andrej Kacian <andrej@kacian.sk>
+    * Fixed the ugly cpu-eating bug (fix by Qball, thanks a _lot_)
+    * Reenabled scrolling to current song on connect
+    * Take focus away from the time button on click
+    * Disallow connecting to MPD older than 0.11.0
+
+2004-06-28 Andrej Kacian <andrej@kacian.sk>
+    * Fixed playlist item update when empty some text field is empty
+    * Implemented playlist reordering using mouse drag&drop
+    * Recent stream urls now get saved on quit and loaded on start
+    * Added keyboard shortcuts for 'crop delete' and 'delete all'
+    * Don't scroll playlist view to current song so often
+
+2004-06-26 Andrej Kacian <andrej@kacian.sk>
+    * Plchanges implementation should now be complete (and bugless?)
+    * Version bump to 0.11.0 (sync with MPD version numbering)
+    * Lower max. refresh rate to 10s, add " [ms]" to refresh rate config label
+    * Implemented recent stream popdown menu in stream add dialog
+    * Released 0.11.0
+
+2004-06-18 Andrej Kacian <andrej@kacian.sk>
+    * Update libmpdclient.[ch] to 0.11.0
+    * Change default MPD port to 6600
+    * Use 0.11.0 way of retrieving status
+    * Partially implement plchanges (somewhat broken at the moment)
+    * Fix playlist scroll to current song
+
+2004-06-14 Andrej Kacian <andrej@kacian.sk>
+    * Accelerators: Del, Ins, Shift+Ins
+
+2004-05-28 Andrej Kacian <andrej@kacian.sk>
+    * Fix recursive file loading
+
+2004-05-27 Andrej Kacian <andrej@kacian.sk>
+    * Hide the database tree when updating
+
+2004-05-26 Andrej Kacian <andrej@kacian.sk>
+    * Rewrote database tree populating in 'Add' window
+
+2004-05-23 Andrej Kacian <andrej@kacian.sk>
+    * Fixed a bug in current song bold highlighting
+    * Added a 'Crop' option to Remove menu to remove all but selected songs
+    * Only open 'Add' window once
+    * Add directories recursively by default, remove checkbox for recursive add
+    * Add repeat and shuffle buttons to main playlist
+    * Do not show playlist initially
+    * Moved some stuff from gui_update() to gui_set_connected()
+
+2004-05-22 Andrej Kacian <andrej@kacian.sk>
+    * Support non-blocking update, while maintaining backwards compatibility
+    * Changed player icons pixmaps name prefix to "player-"
+    * Add nice icon for audio files in 'Add' dialog
+
+2004-05-21 Andrej Kacian <andrej@kacian.sk>
+    * Show MPD database directory tree in Add window
+    * Added an 'Update' button in Add window
+    * Adding songs to playlist now works
+    * Added option for adding directories recursively
+
+2004-05-20 Andrej Kacian <andrej@kacian.sk>
+    * Add GUI submenus for adding/removing files
+    * Removing songs from playlist now possible
+
+2004-05-19 Andrej Kacian <andrej@kacian.sk>
+    * 'All' type quicksearch implemented
+    * Made quicksearch case insensitive
+    * Fixed a small trackname scroll bug
+
+2004-05-18 Andrej Kacian <andrej@kacian.sk>
+    * Create quicksearch type combobox with libglade instead of code
+    * Quicksearch implemented (except type 'All' search)
+
+2004-05-14 Andrej Kacian <andrej@kacian.sk>
+    * Fixed a bug where trackname wouldn't scroll after disconnecting and
+      connecting back to mpd
+
+2004-05-09 Andrej Kacian <andrej@kacian.sk>
+    * Enable playlist saving, deleting
+
+2004-05-08 Andrej Kacian <andrej@kacian.sk>
+    * Multiple songs can be selected in playlist now (preparing for playlist
+      editing)
+    * Fixed a bug in current song highlighting
+    * Scroll track name if too long
+
+2004-05-07 Andrej Kacian <andrej@kacian.sk>
+    * Currently playing song row is in bold font in playlist
+
+2004-05-06 Andrej Kacian <andrej@kacian.sk>
+    * scroll to currently playing song after connect, if any (doh! fixed)
+    * released 0.2.1
+
+2004-05-04 Andrej Kacian <andrej@kacian.sk>
+    * fixed a gtk-warning when users has no playlists and tries to open
+      playlists window
+    * set playlist cursor on currently playing song after connect, if any
+
+2004-04-30 Andrej Kacian <andrej@kacian.sk>
+    * Improved MPD error handling
+
+2004-04-19 Andrej Kacian <andrej@kacian.sk>
+    * Changed code for player control buttons to use new GtkToolButton widget
+    * Show seek time in statusbar when dragging progressbar
+    * Fix statusbar message updating
+    * Changed order of columns in playlist
+    * Fix refresh bug
+    * release 0.2.0
+
+2004-04-08 Andrej Kacian <andrej@kacian.sk>
+    * Made MPD status refresh rate configurable
+    * Changed time display from label to no-relief button
+    * Free config strings before g_strdup()ing new values
+    * Released 0.1.6
+    * Fix bug on playlist clear
+    * Check if something is loaded in playlist before trying to play song
+      when pressing Play button
+    * Don't open config and playlists window more than once at a time
+
+2004-04-07 Andrej Kacian <andrej@kacian.sk>
+    * Made Load button useful in playlists window
+    * Rewrote confg and playlists windows behavior logic, they now get
+      destroyed on close and regenerated again as needed
+    * Some code cleanup
+    * Released 0.1.5
+    * Put main UI into a box with narrow border for better look
+    * Fixed a problem when reconnecting
+
+2004-04-05 Andrej Kacian <andrej@kacian.sk>
+    * Released 0.1.3
+    * Increased width of bitrate and mode display frames
+    * Playlist list liststore now gets created
+    * First row is now automatically selected in GUI playlist on playlist load
+    * Released 0.1.4
+    * List of playlists is now loaded properly into playlists window
+    * Optionally append to existing playlist when loading a playlist
+
+2004-04-04 Andrej Kacian <andrej@kacian.sk>
+    * Filename is now shown in song title display when neither artist nor
+      title strings are present
+    * Selected song in playlist is being played when PLAY button is pressed
+    * Playlist now uses alternating colors for rows
+    * MPD is now queried for status every 500ms instead of 100ms
+    * Glurp now reloads playlist from server if it has changed
+    * Some code cleanup
+
+2004-04-03 Andrej Kacian <andrej@kacian.sk>
+    * Now also displaying track number in player's trackname field
+    * Proper title is now displayed when not autoconnecting
+
+2004-04-02 Andrej Kacian <andrej@kacian.sk>
+    * Glurp now uses custom icons for player control buttons
+    * Songs can now be played by double-clicking on them in playlist
+    * Added tracknumber column to the playlist
+    * First public release, v0.1.0
+    * Fixed config file existence checks in config_save() and config_load()
+    * Released 0.1.1, because 0.1.0 is unusable
+    * Started work on playlist editing
+    * Released 0.1.2 due to autotools misconfig
+    * Cleaned up autotools files
+    * Moved some GUI-related code from comm.c to gui.c
+    * gui_update() is only called when connected to server now
+
+2004-04-01 Andrej Kacian <andrej@kacian.sk>
+    * Fixed connection checking on few places in code
+
+2004-03-20 Andrej Kacian <andrej@kacian.sk>
+    * User can now switch between elapsed and remaining time display
+    * Rewrote internal structures to use more pointers
+    * Fixed a preferences saving bug
+
+2004-03-18 Andrej Kacian <andrej@kacian.sk>
+    * Player now shows artist and title of currently played song
+    * Added vertical label "VOLUME" to the volumebar
+
+2004-03-17 Andrej Kacian <andrej@kacian.sk>
+    * Implemented functionality for Play, Pause and Stop buttons
+    * Moved player control functions to player.[ch]
+    * Made only connect button shown in GUI on start
+
+2004-03-16 Andrej Kacian <andrej@kacian.sk>
+    * Playlist is now loaded properly
+    * Playlist can now be hidden/shown with a GUI button
+
+2004-03-15 Andrej Kacian <andrej@kacian.sk>
+    * Started work on glurp
+    * Created initial version of GUI, some basic functionality
+    * Connecting to server now works
+    * Configuration is now saved into ~/.glurp file
+    * Volume slidebar now works
+    * Progressbar now works, also for seeking inside a song
+    * Time display can now only display elapsed time
+    * Button for connecting/disconnecting is implemented

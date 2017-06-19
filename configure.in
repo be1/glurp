@@ -1,0 +1,88 @@
+dnl Process this file with autoconf to produce a configure script.
+
+AC_INIT(configure.in)
+
+version=0.12.3
+
+AM_INIT_AUTOMAKE(glurp, $version, andrej@kacian.sk)
+AM_CONFIG_HEADER(config.h)
+
+AC_DEFINE_UNQUOTED(GLURP_VERSION, "${version}", [glurp's version])
+
+AM_MAINTAINER_MODE
+user_CFLAGS=$CFLAGS
+
+AC_ISC_POSIX
+AC_PROG_CC
+AM_PROG_CC_STDC
+AC_HEADER_STDC
+dnl AM_PROG_LIBTOOL
+AC_CANONICAL_HOST
+
+debug=0
+AC_MSG_CHECKING(whether to enable debugging output)
+AC_ARG_ENABLE(debug,
+    [  --enable-debug		enable debug output to stderr ],
+    [
+	case "${enableval}" in
+	  yes)
+		  if test x"$user_CFLAGS" = x; then
+		    CFLAGS="-Wall -Werror -ggdb -O0"
+		    echo -n Setting CFLAGS ...
+				AC_SUBST(CFLAGS)
+			fi
+			AC_MSG_RESULT(yes)
+	    AC_DEFINE(GLURP_DEBUG, [], [Wheter to enable debug statements])
+	    debug=1
+	    ;;
+	esac
+    ],
+    [
+      AC_MSG_RESULT(no)
+    ])
+
+pkg_modules="gtk+-2.0 >= 2.4 glib-2.0 >= 2.4 gmodule-2.0 >= 2.6 libmpd >= 0.0.9.8"
+PKG_CHECK_MODULES(PACKAGE, [$pkg_modules])
+AC_SUBST(PACKAGE_CFLAGS)
+AC_SUBST(PACKAGE_LIBS)
+
+dnl AC_SUBST(GETTEXT_PACKAGE)
+dnl AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"glurp")
+
+dnl Add the languages which your application supports here.
+dnl ALL_LINGUAS=""
+dnl AM_GLIB_GNU_GETTEXT
+
+dnl Set PACKAGE PREFIX
+if test "x${prefix}" = "xNONE"; then
+  dnl Check target host for prefix
+  case $host in 
+    *-*-mingw32* | *-*-cygwin* | *-*-windows)
+      packageprefix="c:/progra~1/glurp" ;;
+    *)
+      packageprefix=${ac_default_prefix} ;;
+  esac
+else
+  packageprefix=${prefix}
+fi
+
+EXTRA_CFLAGS=
+EXTRA_LDFLAGS=
+case $host in
+  *-*-mingw32* | *-*-windows)
+    EXTRA_CFLAGS="-mms-bitfields -mno-cygwin -mwindows"
+    EXTRA_LDFLAGS="-mms-bitfieds -mno-cygwin -export-all-symbols -mwindows" ;;
+  *-*-cygwin*)
+    EXTRA_LDFLAGS=-export-all-symbols ;;
+esac
+AC_SUBST(EXTRA_CFLAGS)
+AC_SUBST(EXTRA_LDFLAGS)   
+AC_OUTPUT([
+Makefile
+pixmaps/Makefile
+src/Makefile
+])
+
+echo
+echo "Configure finished, type \`make' to build Glurp."
+echo
