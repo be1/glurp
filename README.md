@@ -2,7 +2,7 @@
 an old gtk+ 2.x MPD client
 
 ## prerequisites
-autotools, pkg-config, header files and libraries for Gtk+2.x, libmpd1.
+autotools, pkg-config, headers and libs for gtk+-2.0 >= 2.4 glib-2.0 >= 2.4 gmodule-2.0 >= 2.6 libmpd >= 0.0.9.8
 
-## build
+## build on *nix
 use autoreconf and make
