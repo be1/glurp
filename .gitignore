@@ -17,6 +17,8 @@ Makefile.in
 /autoscan-*.log
 /aclocal.m4
 /compile
+/config.log
+/config.status
 /config.guess
 /config.h.in
 /config.sub
