@@ -211,7 +211,7 @@ void config_load_item(const gchar *key, const gchar *value) {
 void config_save() {
   gchar *conf_path = NULL, *stream_history = NULL;
   FILE *f;
-  GtkWidget *window_main, *w;
+  GtkWidget *w;
   gboolean vis;
 
   if (glurp->alternate_config_file)
@@ -253,7 +253,7 @@ void config_save() {
   }
 
   w = GTK_WIDGET(gtk_builder_get_object(builder, "togglebutton_playlist"));
-//  if( glurp->config->playlist_vis_on_start ) {
+
   if( (vis = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(w))) ) {
     debug("playlist visible");
     g_fprintf(f, "playlist-visible-on-start = %d\n", yesno(vis));
@@ -275,9 +275,6 @@ void config_save() {
     debug("stream-history = %s", stream_history);
     g_free(stream_history);
   }
-
-  window_main = GTK_WIDGET(gtk_builder_get_object(builder, "glurp_window_main"));
-
 
   if( glurp->config->pos_x != -11000 && glurp->config->pos_y != -11000 ) {
     g_fprintf(f, "window-x = %d\nwindow-y = %d\n", glurp->config->pos_x, glurp->config->pos_y);

@@ -920,13 +920,11 @@ gboolean on_ui_add_update_clicked(GtkWidget *widget, gpointer data) {
 
 gboolean on_ui_add_add_clicked(GtkWidget *widget, gpointer data) {
   GtkTreeView *tv;
-  GtkTreeModel *tm;
   GtkTreeSelection *ts;
 
   if(!mpd_check_connected(glurp->mpd)) return FALSE;
 
   tv = GTK_TREE_VIEW(gtk_builder_get_object(builder, "treeview_add"));
-  tm = gtk_tree_view_get_model(tv);
   if( !(ts = gtk_tree_view_get_selection(tv)) ) {
     debug("No selection, ignoring");
     return FALSE;
@@ -1070,7 +1068,6 @@ gboolean on_ui_playlist_drag_drop(GtkTreeView *tree, GdkDragContext *con, gint x
   GtkTreeModel *tm = GTK_TREE_MODEL(glurp->gui_playlist);
   GtkTreeIter iter;
   gint did, dpos, spos;
-  gint num_selected;
   gint* path_indices;
   GtkTreeSelection *sel;
   GList *selected_rows, *sel_rows_iterator;
@@ -1105,7 +1102,6 @@ gboolean on_ui_playlist_drag_drop(GtkTreeView *tree, GdkDragContext *con, gint x
 
   sel = gtk_tree_view_get_selection(tree);
   sel_rows_iterator = selected_rows = gtk_tree_selection_get_selected_rows(sel, &tm);
-  num_selected = gtk_tree_selection_count_selected_rows(sel);
   do {
     path = (GtkTreePath*)sel_rows_iterator->data;
     path_indices = gtk_tree_path_get_indices(path);
@@ -1293,7 +1289,7 @@ gboolean on_menu_outputs_deactivate(GtkWidget *widget, gpointer data) {
 
 gboolean on_menu_output_activate(GtkWidget *widget, gpointer data) {
   gboolean enable = FALSE;
-  gint i, d = (gint)data;
+  glong i, d = (glong)data;
 
   if( d < 0 ) enable = TRUE;
   i = abs(d) - 1;

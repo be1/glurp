@@ -1129,7 +1129,7 @@ GtkMenu *populate_outputs_menu() {
   GtkMenuItem *item = NULL;
   mpd_OutputEntity *output;
   MpdData* entity;
-  gint i;
+  glong i;
 
   for (entity = mpd_server_get_output_devices(glurp->mpd);entity;entity = mpd_data_get_next(entity)  )  {
     output = entity->output_dev;
