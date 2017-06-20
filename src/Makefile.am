@@ -17,8 +17,8 @@ glurp_SOURCES = \
 	main.c \
 	structs.h \
 	support.h support.c \
-  trayicon.h trayicon.c \
-  traymenu.h traymenu.c
+	trayicon.h trayicon.c \
+	traymenu.h traymenu.c
 
 glurp_LDFLAGS = -export-dynamic @EXTRA_LDFLAGS@
 

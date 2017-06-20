@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Glurp MPD Client
+Name[fr]=Client MPD Glurp
+Comment=an old and small MPD interface
+Comment[fr]=une vieille et petite interface à MPD
+Exec=glurp
+Icon=glurp
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;AudioVideo;Audio;
